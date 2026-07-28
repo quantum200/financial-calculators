@@ -65,5 +65,6 @@ export const RightBlock = styled.div`
     max-width: 500px;
     margin-left: 50px;
     height: auto;
-    background: red;
+    background: #1d293d;
+    border-radius: 10px;
 `;
