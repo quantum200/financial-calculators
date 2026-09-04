@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import SipCalculator from "./src/сomponents/SipCalculator.jsx";
+import SwpCalculator from "./src/сomponents/SwpCalculator.jsx";
+import StepUpSipCalculator from "./src/сomponents/StepUpSipCalculator.jsx";
+import StepUpSwpCalculator from "./src/сomponents/StepUpSwpCalculator.jsx";
 import {GlobalStyles, AppContainer} from './src/styles/GlobalStyles.jsx';
 import {SubTitle, Title} from './src/styles/Title.jsx';
 import {
@@ -54,6 +57,9 @@ function App() {
                     </ButtonsCalculators>
 
                     {activeTab === 'SIP' && <SipCalculator />}
+                    {activeTab === 'SWP' && <SwpCalculator />}
+                    {activeTab === 'STEP_UP_SIP' && <StepUpSipCalculator />}
+                    {activeTab === 'STEP_UP_SWP' && <StepUpSwpCalculator />}
                 </LeftBlockHalf>
 
                 <LeftBlockSecondHalf></LeftBlockSecondHalf>

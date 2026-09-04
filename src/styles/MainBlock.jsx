@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const MainBlock = styled.div`
-  max-width: 100%;
+    max-width: 100%;
     max-height: 800px;
-  margin: 0 auto;
-  padding: 40px 0;
-    
+    margin: 0 auto;
+    padding: 40px 0;
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
 `;
 
 export const LeftBlock = styled.div`
@@ -64,7 +64,7 @@ export const RightBlock = styled.div`
     flex: 1;
     max-width: 500px;
     margin-left: 50px;
-    height: auto;
+    height: 550px;
     background: #1d293d;
     border-radius: 10px;
 `;
