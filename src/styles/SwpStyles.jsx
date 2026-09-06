@@ -34,4 +34,5 @@ export const FinalButton1 = styled.button`
     font-size: 16px;
     color: #ffffff;
     background: #155dfc;
+    box-shadow: 0 20px 20px -8px rgba(0, 0, 0, 0.3);
 `;

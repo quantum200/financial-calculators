@@ -18,7 +18,7 @@ export const ValueDisplaySwp = styled.div`
 `;
 
 export const TitleCalc3 = styled.text`
-    color: #861043;
+    color: #e60076;
 `;
 
 export const FinalButton = styled.button`

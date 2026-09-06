@@ -3,6 +3,8 @@ import SipCalculator from "./src/сomponents/SipCalculator.jsx";
 import SwpCalculator from "./src/сomponents/SwpCalculator.jsx";
 import StepUpSipCalculator from "./src/сomponents/StepUpSipCalculator.jsx";
 import StepUpSwpCalculator from "./src/сomponents/StepUpSwpCalculator.jsx";
+import LumpSumCalculator from "./src/сomponents/LumpSumCalculator.jsx";
+import EmiCalculator from "./src/сomponents/EmiCalculator.jsx";
 import {GlobalStyles, AppContainer} from './src/styles/GlobalStyles.jsx';
 import {SubTitle, Title} from './src/styles/Title.jsx';
 import {
@@ -60,6 +62,8 @@ function App() {
                     {activeTab === 'SWP' && <SwpCalculator />}
                     {activeTab === 'STEP_UP_SIP' && <StepUpSipCalculator />}
                     {activeTab === 'STEP_UP_SWP' && <StepUpSwpCalculator />}
+                    {activeTab === 'LUMP_SUM' && <LumpSumCalculator />}
+                    {activeTab === 'EMI' && <EmiCalculator />}
                 </LeftBlockHalf>
 
                 <LeftBlockSecondHalf></LeftBlockSecondHalf>

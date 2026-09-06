@@ -6,19 +6,19 @@ export const IconCalcSwp = styled.div`
     justify-content: center;
     height: 48px;
     width: 48px;
-    background: #e60076;
+    background: #0092b8;
     border-radius: 10px;
     margin-right: 20px;
 `;
 
 export const ValueDisplaySwp = styled.div`
-    color: #e60076;
+    color: #0092b8;
     padding: 5px 10px;
     font-size: 16px;
 `;
 
 export const TitleCalc3 = styled.text`
-    color: #861043;
+    color: #0092b8;
 `;
 
 export const FinalButton = styled.button`
@@ -33,6 +33,6 @@ export const FinalButton = styled.button`
     font-weight: bold;
     font-size: 16px;
     color: #ffffff;
-    background: #e60076;
+    background: #0092b8;
     box-shadow: 0 20px 20px -8px rgba(0, 0, 0, 0.3);
 `;
