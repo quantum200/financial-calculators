@@ -25,15 +25,20 @@ export const LeftBlockHalf = styled.div`
 `
 
 export const LeftBlockSecondHalf = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    min-height: 550px;
     width: 50%;
+    padding: 22px;
 `
 
 export const ButtonsCalculators = styled.div`
     display: flex;
     flex-direction: row;
     width: 100%;
-    background: #EEAECA;
-    background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+    background: #fae8ff;
     border-radius: 10px;
     margin-bottom: 20px;
 `

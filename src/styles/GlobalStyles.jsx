@@ -9,11 +9,9 @@ export const GlobalStyles = createGlobalStyle`
 
   body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(225deg, #abc8de 0%, #c7c9d8 16.6%, #e5cccf 33.3%, #ffd3c7 50%, #ffdbc2 66.6%, #ffe4c0 83.3%, #ffedc3 100%);
+      background: #D3D3D3;
       color: #333;
       min-height: 100vh;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
   }
 `;
 

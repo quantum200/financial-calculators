@@ -2,7 +2,7 @@ export const SipLogic = (monthlyInvestment, expectedReturn, timePeriod, inflatio
     const n = timePeriod * 12;
     const r = (expectedReturn / 12) / 100;
     const totInv = monthlyInvestment * n;
-    const futVal = monthlyInvestment * ((((1 + r) ** n) - 1) / r) * (1 + r);
+    const futVal = expectedReturn === 0 ? totInv : monthlyInvestment * ((((1 + r) ** n) - 1) / r) * (1 + r);
     const returns = futVal - totInv;
 
     const realVal = (futVal / (1 + (inflationRate / 100)) ** timePeriod);
@@ -16,8 +16,8 @@ export const SipLogic = (monthlyInvestment, expectedReturn, timePeriod, inflatio
         expected: expectedReturn,
         timePeriod: timePeriod,
         inflationRate: inflationRate,
-        realVal: true,
-        taxAmount: true,
+        realVal: isInflationApplied ? realVal : null,
+        taxAmount: isTaxApplied ? taxAmount : null,
         futVal: futVal,
         returns: returns,
         chart1: chart1,

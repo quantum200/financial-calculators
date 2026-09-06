@@ -5,17 +5,10 @@ import StepUpSipCalculator from "./src/сomponents/StepUpSipCalculator.jsx";
 import StepUpSwpCalculator from "./src/сomponents/StepUpSwpCalculator.jsx";
 import LumpSumCalculator from "./src/сomponents/LumpSumCalculator.jsx";
 import EmiCalculator from "./src/сomponents/EmiCalculator.jsx";
+import SipPlaceholder from "./src/utils/NothingResults/SipPlaceholder.jsx";
 import {GlobalStyles, AppContainer} from './src/styles/GlobalStyles.jsx';
 import {SubTitle, Title} from './src/styles/Title.jsx';
-import {
-    ButtonsCalculators,
-    TabButton,
-    LeftBlock,
-    LeftBlockHalf,
-    LeftBlockSecondHalf,
-    MainBlock,
-    RightBlock
-} from './src/styles/MainBlock.jsx';
+import {ButtonsCalculators, TabButton, LeftBlock, LeftBlockHalf, LeftBlockSecondHalf, MainBlock, RightBlock} from './src/styles/MainBlock.jsx';
 
 
 function App() {
@@ -24,16 +17,6 @@ function App() {
     const handleTabChange = (tabName) => {
         setActiveTab(tabName);
         setResults(null);
-    };
-
-    const formatMoney = (value) => {
-        if (!value) return "$0";
-
-        return new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
-            maximumFractionDigits: 0,
-        }).format(value);
     };
 
 
@@ -82,14 +65,9 @@ function App() {
                 </LeftBlockHalf>
 
                 <LeftBlockSecondHalf>
-                    {results ? (
-                        <div>
-                            <h3>Future Value: {formatMoney(results.futVal)}</h3>
-                            <p>Invested: {formatMoney(results.invested)}</p>
-                        </div>
-                    ) : (
-                        <p></p>
-                    )}
+                    {!results && activeTab === 'SIP' && <SipPlaceholder />}
+
+                    
                 </LeftBlockSecondHalf>
             </LeftBlock>
               <RightBlock></RightBlock>

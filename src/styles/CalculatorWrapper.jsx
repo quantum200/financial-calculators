@@ -156,4 +156,15 @@ export const FinalButton = styled.button`
     font-size: 16px;
     color: #ffffff;
     background: #9810fa;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  
+  &:hover {
+    background: #a933fb;
+  }
+  
+  &:active {
+    background: #820cd9;
+    transform: scale(0.98);
+  }
 `;

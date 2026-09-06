@@ -35,4 +35,15 @@ export const FinalButton = styled.button`
     color: #ffffff;
     background: #e60076;
     box-shadow: 0 20px 20px -8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        background: #e60076;
+    }
+
+    &:active {
+        background: #e60076;
+        transform: scale(0.98);
+    }
 `;
