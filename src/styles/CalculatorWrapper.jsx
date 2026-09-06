@@ -32,11 +32,11 @@ export const TitleText = styled.div`
     font-size: 16px;
 `;
 
-export const TitleCalc = styled.text`
+export const TitleCalc = styled.p`
     color: #717182;
 `;
 
-export const TitleCalc1 = styled.text`
+export const TitleCalc1 = styled.p`
     color: #4d179a
 `;
 

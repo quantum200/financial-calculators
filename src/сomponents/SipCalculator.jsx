@@ -1,12 +1,21 @@
 import { useState } from 'react';
 import { CalculatorWrapper, CalculatorWrapperInner, IconCalc, TitleText, TitleCalc, TitleCalc1, InputGroup,
     HeaderRow, Label, ValueDisplay, StyledRangeInput, CheckboxContainer, HiddenCheckbox, CustomCheckbox, FinalButton } from '../styles/CalculatorWrapper';
+import { SipLogic } from "../utils/SipLogic.jsx";
 
-const SipCalculator = () => {
+const SipCalculator = ({ onCalculate }) => {
     const [investment, setInvestment] = useState(500);
     const [expected, setExpected] = useState(1);
     const [time, setTime] = useState(1);
     const [inflation, setInflation] = useState(0);
+
+    const [isInflationApplied, setIsInflationApplied] = useState(false);
+    const [isTaxApplied, setIsTaxApplied] = useState(false);
+
+    const handleCalculateClick = () => {
+        const calculatedData = SipLogic(investment, expected, time, inflation, isInflationApplied, isTaxApplied);
+        onCalculate(calculatedData);
+    };
 
     const handleSliderChange = (event) => {
         const newValue = event.target.value;
@@ -34,7 +43,7 @@ const SipCalculator = () => {
                     <IconCalc>
                         <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'>
                             <title>trending_up_fill</title>
-                            <g id="trending_up_fill" fill='none' fill-rule='nonzero'>
+                            <g id="trending_up_fill" fill='none'>
                                 <path
                                     d='M24 0v24H0V0h24ZM12.594 23.258l-.012.002-.071.035-.02.004-.014-.004-.071-.036c-.01-.003-.019 0-.024.006l-.004.01-.017.428.005.02.01.013.104.074.015.004.012-.004.104-.074.012-.016.004-.017-.017-.427c-.002-.01-.009-.017-.016-.018Zm.264-.113-.014.002-.184.093-.01.01-.003.011.018.43.005.012.008.008.201.092c.012.004.023 0 .029-.008l.004-.014-.034-.614c-.003-.012-.01-.02-.02-.022Zm-.715.002a.023.023 0 0 0-.027.006l-.006.014-.034.614c0 .012.007.02.017.024l.015-.002.201-.093.01-.008.003-.011.018-.43-.003-.012-.01-.01-.184-.092Z'/>
                                 <path fill='#FFFFFFFF'
@@ -61,7 +70,7 @@ const SipCalculator = () => {
                 <InputGroup>
                     <HeaderRow>
                         <Label>
-                            <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><title>percentage_line</title><title>percentage_line</title><g id="percentage_line" fill='none' fill-rule='nonzero'><path d='M24 0v24H0V0zM12.594 23.258l-.012.002-.071.035-.02.004-.014-.004-.071-.036q-.016-.004-.024.006l-.004.01-.017.428.005.02.01.013.104.074.015.004.012-.004.104-.074.012-.016.004-.017-.017-.427q-.004-.016-.016-.018m.264-.113-.014.002-.184.093-.01.01-.003.011.018.43.005.012.008.008.201.092q.019.005.029-.008l.004-.014-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014-.034.614q.001.018.017.024l.015-.002.201-.093.01-.008.003-.011.018-.43-.003-.012-.01-.01z'/><path fill='#956AFFFF' d='M18.293 4.293a1 1 0 1 1 1.414 1.414l-14 14a1 1 0 1 1-1.414-1.414zM18 17a1 1 0 1 0-2 0 1 1 0 0 0 2 0M8 7a1 1 0 1 0-2 0 1 1 0 0 0 2 0m12 10a3 3 0 1 1-6 0 3 3 0 0 1 6 0M10 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0'/></g></svg>
+                            <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><title>percentage_line</title><title>percentage_line</title><g id="percentage_line" fill='none'><path d='M24 0v24H0V0zM12.594 23.258l-.012.002-.071.035-.02.004-.014-.004-.071-.036q-.016-.004-.024.006l-.004.01-.017.428.005.02.01.013.104.074.015.004.012-.004.104-.074.012-.016.004-.017-.017-.427q-.004-.016-.016-.018m.264-.113-.014.002-.184.093-.01.01-.003.011.018.43.005.012.008.008.201.092q.019.005.029-.008l.004-.014-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014-.034.614q.001.018.017.024l.015-.002.201-.093.01-.008.003-.011.018-.43-.003-.012-.01-.01z'/><path fill='#956AFFFF' d='M18.293 4.293a1 1 0 1 1 1.414 1.414l-14 14a1 1 0 1 1-1.414-1.414zM18 17a1 1 0 1 0-2 0 1 1 0 0 0 2 0M8 7a1 1 0 1 0-2 0 1 1 0 0 0 2 0m12 10a3 3 0 1 1-6 0 3 3 0 0 1 6 0M10 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0'/></g></svg>
                             Expected Return (% p.a.)
                         </Label>
                         <ValueDisplay>{expected.toLocaleString()}%</ValueDisplay>
@@ -91,18 +100,18 @@ const SipCalculator = () => {
                 </InputGroup>
 
                 <CheckboxContainer>
-                    <HiddenCheckbox type="checkbox" />
+                    <HiddenCheckbox type="checkbox" checked={isInflationApplied} onChange={(e) => setIsInflationApplied(e.target.checked)} />
                     <CustomCheckbox />
                     <span>Apply inflation adjustment to see real purchasing power</span>
                 </CheckboxContainer>
 
                 <CheckboxContainer>
-                    <HiddenCheckbox type="checkbox" />
+                    <HiddenCheckbox type="checkbox" checked={isTaxApplied} onChange={(e) => setIsTaxApplied(e.target.checked)} />
                     <CustomCheckbox />
                     <span>Apply capital gains tax (12.5%)</span>
                 </CheckboxContainer>
 
-                <FinalButton>Calculate Returns</FinalButton>
+                <FinalButton onClick={handleCalculateClick}>Calculate Returns</FinalButton>
 
             </CalculatorWrapper>
         );
