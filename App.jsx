@@ -6,6 +6,11 @@ import StepUpSwpCalculator from "./src/сomponents/StepUpSwpCalculator.jsx";
 import LumpSumCalculator from "./src/сomponents/LumpSumCalculator.jsx";
 import EmiCalculator from "./src/сomponents/EmiCalculator.jsx";
 import SipPlaceholder from "./src/utils/NothingResults/SipPlaceholder.jsx";
+import SwpPlaceholder from "./src/utils/NothingResults/SwpPlaceholder.jsx";
+import StepUpSipPlaceholder from "./src/utils/NothingResults/StepUpSipPlaceholder.jsx";
+import StepUpSwpPlaceholder from "./src/utils/NothingResults/StepUpSwpPlaceholder.jsx";
+import LumpSumPlaceholder from "./src/utils/NothingResults/LumpSumPlaceholder.jsx";
+import EmiPlaceholder from "./src/utils/NothingResults/EmiPlaceholder.jsx";
 import {GlobalStyles, AppContainer} from './src/styles/GlobalStyles.jsx';
 import {SubTitle, Title} from './src/styles/Title.jsx';
 import {ButtonsCalculators, TabButton, LeftBlock, LeftBlockHalf, LeftBlockSecondHalf, MainBlock, RightBlock} from './src/styles/MainBlock.jsx';
@@ -66,8 +71,13 @@ function App() {
 
                 <LeftBlockSecondHalf>
                     {!results && activeTab === 'SIP' && <SipPlaceholder />}
+                    {!results && activeTab === 'SWP' && <SwpPlaceholder />}
+                    {!results && activeTab === 'STEP_UP_SIP' && <StepUpSipPlaceholder />}
+                    {!results && activeTab === 'STEP_UP_SWP' && <StepUpSwpPlaceholder />}
+                    {!results && activeTab === 'LUMP_SUM' && <LumpSumPlaceholder />}
+                    {!results && activeTab === 'EMI' && <EmiPlaceholder />}
 
-                    
+
                 </LeftBlockSecondHalf>
             </LeftBlock>
               <RightBlock></RightBlock>
