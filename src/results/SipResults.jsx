@@ -1,4 +1,4 @@
-import { LeftMain } from '../styles/какой-то-путь';
+import { LeftMain, TopResultCard, ResultLabel, ResultValueBig, BottomResultsRow, HalfResultCard, ResultValue} from '../results/stylesFinally/SipResultsStyle.jsx';
 
 const SipResults = ({ data }) => {
     const formatMoney = (value) => {
@@ -13,14 +13,35 @@ const SipResults = ({ data }) => {
 
     return (
         <LeftMain>
-            <h3>Future Value: {formatMoney(data.futVal)}</h3>
-            <p>Invested: {formatMoney(data.invested)}</p>
-            <p>Returns: {formatMoney(data.returns)}</p>
+            <TopResultCard>
+                <ResultLabel>Future Value</ResultLabel>
+                <ResultValueBig>{formatMoney(data.futVal)}</ResultValueBig>
+            </TopResultCard>
+
+            <BottomResultsRow>
+                <HalfResultCard>
+                    <ResultLabel>Invested</ResultLabel>
+                    <ResultValue>{formatMoney(data.invested)}</ResultValue>
+                </HalfResultCard>
+
+                <HalfResultCard>
+                    <ResultLabel>Returns</ResultLabel>
+                    <ResultValue>{formatMoney(data.returns)}</ResultValue>
+                </HalfResultCard>
+            </BottomResultsRow>
+
             {data.taxAmount && (
-                <p>Tax Amount (12.5%): {formatMoney(data.taxAmount)}</p>
+                <TopResultCard>
+                    <ResultLabel>Tax Amount (12.5%)</ResultLabel>
+                    <ResultValue>{formatMoney(data.taxAmount)}</ResultValue>
+                </TopResultCard>
             )}
+
             {data.realVal && (
-                <p>Real Value (Inflation Adjusted): {formatMoney(data.realVal)}</p>
+                <TopResultCard>
+                    <ResultLabel>Real Value (Inflation Adjusted)</ResultLabel>
+                    <ResultValue>{formatMoney(data.realVal)}</ResultValue>
+                </TopResultCard>
             )}
         </LeftMain>
     );
