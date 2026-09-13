@@ -64,12 +64,3 @@ export const TabButton = styled.button`
         background: ${props => props.$isActive ? '#ffffff' : 'rgba(255,255,255,0.2)'};
     }
 `;
-
-export const RightBlock = styled.div`
-    flex: 1;
-    max-width: 500px;
-    margin-left: 50px;
-    height: 550px;
-    background: #1d293d;
-    border-radius: 10px;
-`;
