@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Calculator = styled.div`
+export const BasicCalculatorStyle = styled.div`
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -85,7 +85,7 @@ export const TabButtonWrapper = styled.div`
 export const KeypadGrid = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    gap: 8px;
     width: 100%;
 `;
 
