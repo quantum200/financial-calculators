@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import BasicCalculator from "./BasicCalculator.jsx";
-import ScientificCalculator from "./ScientificCalculator.jsx";
+
 import {
     BasicCalculatorStyle,
     DisplayBox,
@@ -40,13 +40,11 @@ const MathCalculator = () => {
             </DisplayBox>
 
             <TabsWrapper>
-                <TabButtonWrapper $active={activeMode === 'Basic' && (<BasicCalculator displayValue={displayValue} setDisplayValue={setDisplayValue}/>)} onClick={() => handleModeChange('Basic')}>Basic</TabButtonWrapper>
-                <TabButtonWrapper $active={activeMode === 'Scientific' && (<ScientificCalculator displayValue={displayValue} setDisplayValue={setDisplayValue}/>)} onClick={() => handleModeChange('Scientific')}>Scientific</TabButtonWrapper>
+                <TabButtonWrapper $active={activeMode === 'Basic'} onClick={() => handleModeChange('Basic')}>Basic</TabButtonWrapper>
             </TabsWrapper>
 
-            {/* 4. Динамическая подмена только клавиатур */}
-            {activeMode === 'Basic' && <BasicCalculator />}
-            {activeMode === 'Scientific' && <ScientificCalculator />}
+            {activeMode === 'Basic' && (<BasicCalculator displayValue={displayValue} setDisplayValue={setDisplayValue}/>)}
+
         </BasicCalculatorStyle>
     );
 };

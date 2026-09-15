@@ -12,7 +12,6 @@ import StepUpSwpPlaceholder from "./src/utils/NothingResults/StepUpSwpPlaceholde
 import LumpSumPlaceholder from "./src/utils/NothingResults/LumpSumPlaceholder.jsx";
 import EmiPlaceholder from "./src/utils/NothingResults/EmiPlaceholder.jsx";
 import SipResults from "./src/results/SipResults.jsx";
-import MathCalculator from "./src/сomponents/MainCalculator/MathCalculator.jsx";
 import {GlobalStyles, AppContainer} from './src/styles/GlobalStyles.jsx';
 import {SubTitle, Title} from './src/styles/Title.jsx';
 import {
@@ -23,6 +22,7 @@ import {
     LeftBlockSecondHalf,
     MainBlock,
 } from './src/styles/MainBlock.jsx';
+import MathCalculator from "./src/сomponents/MainCalculator/MathCalculator.jsx";
 
 function App() {
     const [activeTab, setActiveTab] = useState('SIP');
@@ -91,9 +91,7 @@ function App() {
                 </LeftBlockSecondHalf>
             </LeftBlock>
 
-              <div>
-                  <MathCalculator />
-              </div>
+              <MathCalculator />
 
           </MainBlock>
         </AppContainer>
