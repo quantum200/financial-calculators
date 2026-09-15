@@ -20,6 +20,24 @@ const MathCalculator = () => {
         setActiveMode(mode);
     };
 
+    const handleOperatorClick = (nextOperator) => {
+        setDisplayValue(displayValue + nextOperator);
+    };
+
+    const handleClearAll = () => {
+        setDisplayValue('0');
+    };
+
+    const handleCalculate = () => {
+        try {
+            let mathExpression = displayValue.replaceAll('×', '*').replaceAll('÷', '/');
+            let result = eval(mathExpression);
+            setDisplayValue(String(result));
+        } catch (error) {
+            setDisplayValue('Error');
+        }
+    };
+
     return (
         <BasicCalculatorStyle>
             <Header>
@@ -43,7 +61,14 @@ const MathCalculator = () => {
                 <TabButtonWrapper $active={activeMode === 'Basic'} onClick={() => handleModeChange('Basic')}>Basic</TabButtonWrapper>
             </TabsWrapper>
 
-            {activeMode === 'Basic' && (<BasicCalculator displayValue={displayValue} setDisplayValue={setDisplayValue}/>)}
+            {activeMode === 'Basic' && (
+                <BasicCalculator
+                    displayValue={displayValue}
+                    setDisplayValue={setDisplayValue}
+                    handleOperatorClick={handleOperatorClick}
+                    handleClearAll={handleClearAll}
+                    handleCalculate={handleCalculate}
+                />)}
 
         </BasicCalculatorStyle>
     );

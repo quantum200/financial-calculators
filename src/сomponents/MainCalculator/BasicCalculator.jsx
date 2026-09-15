@@ -7,7 +7,7 @@ import {
     KeypadGrid,
 } from "../../styles/MainCalculator.jsx";
 
-const BasicCalculator = ({ displayValue, setDisplayValue }) => {
+const BasicCalculator = ({ displayValue, setDisplayValue, handleOperatorClick, handleClearAll, handleCalculate }) => {
 
     const handleNumberClick = (num) => {
         if (displayValue === '0') {
@@ -25,31 +25,35 @@ const BasicCalculator = ({ displayValue, setDisplayValue }) => {
         }
     };
 
+    const handleClear = () => {
+        setDisplayValue('0')
+    }
+
     return (
         <KeypadGrid>
-            <BtnActionC>C</BtnActionC>
-            <BtnAction>CE</BtnAction>
+            <BtnActionC onClick={handleClearAll}>C</BtnActionC>
+            <BtnAction onClick={handleClear}>CE</BtnAction>
             <BtnAction onClick={handleBackspace}>⌫</BtnAction>
-            <BtnOperator>÷</BtnOperator>
+            <BtnOperator onClick={() => handleOperatorClick('÷')}>÷</BtnOperator>
 
             <BtnNumber onClick={() => handleNumberClick('7')}>7</BtnNumber>
             <BtnNumber onClick={() => handleNumberClick('8')}>8</BtnNumber>
             <BtnNumber onClick={() => handleNumberClick('9')}>9</BtnNumber>
-            <BtnOperator>×</BtnOperator>
+            <BtnOperator onClick={() => handleOperatorClick('×')}>×</BtnOperator>
 
             <BtnNumber onClick={() => handleNumberClick('4')}>4</BtnNumber>
             <BtnNumber onClick={() => handleNumberClick('5')}>5</BtnNumber>
             <BtnNumber onClick={() => handleNumberClick('6')}>6</BtnNumber>
-            <BtnOperator>-</BtnOperator>
+            <BtnOperator onClick={() => handleOperatorClick('-')}>-</BtnOperator>
 
             <BtnNumber onClick={() => handleNumberClick('1')}>1</BtnNumber>
             <BtnNumber onClick={() => handleNumberClick('2')}>2</BtnNumber>
             <BtnNumber onClick={() => handleNumberClick('3')}>3</BtnNumber>
-            <BtnOperator>+</BtnOperator>
+            <BtnOperator onClick={() => handleOperatorClick('+')}>+</BtnOperator>
 
             <BtnNumber $wide onClick={() => handleNumberClick('0')}>0</BtnNumber>
             <BtnNumber>.</BtnNumber>
-            <BtnEqual>=</BtnEqual>
+            <BtnEqual onClick={handleCalculate}>=</BtnEqual>
         </KeypadGrid>
     )
 }
