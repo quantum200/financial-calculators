@@ -11,6 +11,7 @@ import {
     TabButtonWrapper,
     TabsWrapper
 } from "../../styles/MainCalculator.jsx";
+import ScientificCalculator from "./ScientificCalculator.jsx";
 
 const MathCalculator = () => {
     const [activeMode, setActiveMode] = useState('Basic');
@@ -30,10 +31,28 @@ const MathCalculator = () => {
 
     const handleCalculate = () => {
         try {
-            let mathExpression = displayValue.replaceAll('×', '*').replaceAll('÷', '/');
+            const factorial = (n) => {
+                if (n === 0 || n === 1) return 1;
+                let res = 1;
+                for (let i = 2; i <= n; i++) res *= i;
+                return res;
+            };
+            let mathExpression = displayValue
+                .replaceAll('×', '*')
+                .replaceAll('÷', '/')
+                .replaceAll('sin', 'Math.sin')
+                .replaceAll('cos', 'Math.cos')
+                .replaceAll('tan', 'Math.tan')
+                .replaceAll('√', 'Math.sqrt')
+                .replaceAll('log', 'Math.log10')
+                .replaceAll('ln', 'Math.log')
+                .replaceAll('^', '**')
+                .replaceAll('²', '**2')
+                .replaceAll('³', '**3')
+                .replace(/(\d+)!/g, 'factorial($1)');
             let result = eval(mathExpression);
             setDisplayValue(String(result));
-        } catch (error) {
+        } catch {
             setDisplayValue('Error');
         }
     };
@@ -59,6 +78,7 @@ const MathCalculator = () => {
 
             <TabsWrapper>
                 <TabButtonWrapper $active={activeMode === 'Basic'} onClick={() => handleModeChange('Basic')}>Basic</TabButtonWrapper>
+                <TabButtonWrapper $active={activeMode === 'Scientific'} onClick={() => handleModeChange('Scientific')}>Scientific</TabButtonWrapper>
             </TabsWrapper>
 
             {activeMode === 'Basic' && (
@@ -68,6 +88,13 @@ const MathCalculator = () => {
                     handleOperatorClick={handleOperatorClick}
                     handleClearAll={handleClearAll}
                     handleCalculate={handleCalculate}
+                />)}
+
+            {activeMode === 'Scientific' && (
+                <ScientificCalculator
+                    displayValue={displayValue}
+                    setDisplayValue={setDisplayValue}
+                    handleOperatorClick={handleOperatorClick}
                 />)}
 
         </BasicCalculatorStyle>

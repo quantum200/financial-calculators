@@ -6,7 +6,7 @@ export const BasicCalculatorStyle = styled.div`
     flex: 1;
     max-width: 400px;
     margin-left: 50px;
-    height: 570px;
+    height: fit-content;
     background: #1d293d;
     border-radius: 10px;
     padding: 24px;
@@ -99,6 +99,19 @@ export const BtnAction = styled.div`
     font-weight: bold;
     font-size: 14px;
     background-color: #f54a00;
+    color: #fff;
+`;
+
+export const BtnScientifc = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    background-color: #4f39f6;
     color: #fff;
 `;
 
