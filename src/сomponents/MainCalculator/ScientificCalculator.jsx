@@ -9,24 +9,46 @@ const ScientificCalculator = ({displayValue, setDisplayValue, handleOperatorClic
         }
     };
 
+    const handleMathLogic = (funcName) => {
+        const inputString = funcName + '(';
+
+        if (displayValue === '0') {
+            setDisplayValue(inputString);
+        } else {
+            setDisplayValue(displayValue + inputString);
+        }
+    };
+
+    const handleSuffixClick = (symbol) => {
+        setDisplayValue(displayValue + symbol);
+    };
+
+    const handleConstantClick = (constant) => {
+        if (displayValue === '0') {
+            setDisplayValue(constant);
+        } else {
+            setDisplayValue(displayValue + constant);
+        }
+    };
+
     return (
         <KeypadGrid>
-            <BtnScientifc>sin</BtnScientifc>
-            <BtnScientifc>cos</BtnScientifc>
-            <BtnScientifc>tan</BtnScientifc>
+            <BtnScientifc onClick={() => handleMathLogic('sin')}>sin</BtnScientifc>
+            <BtnScientifc onClick={() => handleMathLogic('cos')}>cos</BtnScientifc>
+            <BtnScientifc onClick={() => handleMathLogic('tan')}>tan</BtnScientifc>
             <BtnScientifc>x^y</BtnScientifc>
 
-            <BtnScientifc>log</BtnScientifc>
-            <BtnScientifc>ln</BtnScientifc>
-            <BtnScientifc>√</BtnScientifc>
-            <BtnScientifc>²</BtnScientifc>
+            <BtnScientifc onClick={() => handleMathLogic('log')}>log</BtnScientifc>
+            <BtnScientifc onClick={() => handleMathLogic('ln')}>ln</BtnScientifc>
+            <BtnScientifc onClick={() => handleMathLogic('√')}>√</BtnScientifc>
+            <BtnScientifc onClick={() => handleSuffixClick('²')}>²</BtnScientifc>
 
-            <BtnScientifc>³</BtnScientifc>
+            <BtnScientifc onClick={() => handleSuffixClick('³')}>³</BtnScientifc>
             <BtnScientifc>1/x</BtnScientifc>
-            <BtnScientifc>n!</BtnScientifc>
-            <BtnScientifc>π</BtnScientifc>
+            <BtnScientifc onClick={() => handleSuffixClick('!')}>n!</BtnScientifc>
+            <BtnScientifc onClick={() => handleConstantClick('π')}>π</BtnScientifc>
 
-            <BtnScientifc>е</BtnScientifc>
+            <BtnScientifc onClick={() => handleConstantClick('е')}>е</BtnScientifc>
             <BtnScientifc>(</BtnScientifc>
             <BtnScientifc>)</BtnScientifc>
             <BtnEqual onClick={handleCalculate}>=</BtnEqual>
