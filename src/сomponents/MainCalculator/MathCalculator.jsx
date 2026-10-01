@@ -16,6 +16,7 @@ import ScientificCalculator from "./ScientificCalculator.jsx";
 const MathCalculator = () => {
     const [activeMode, setActiveMode] = useState('Basic');
     const [displayValue, setDisplayValue] = useState('0');
+    const [eqial, setEqial] = useState(false);
 
     const handleModeChange = (mode) => {
         setActiveMode(mode);
@@ -23,10 +24,12 @@ const MathCalculator = () => {
 
     const handleOperatorClick = (nextOperator) => {
         setDisplayValue(displayValue + nextOperator);
+        setEqial(false);
     };
 
     const handleClearAll = () => {
         setDisplayValue('0');
+        setEqial(false);
     };
 
     const handleCalculate = () => {
@@ -52,6 +55,7 @@ const MathCalculator = () => {
                 .replace(/(\d+)!/g, 'factorial($1)');
             let result = eval(mathExpression);
             setDisplayValue(String(result));
+            setEqial(true)
         } catch {
             setDisplayValue('Error');
         }
@@ -88,6 +92,7 @@ const MathCalculator = () => {
                     handleOperatorClick={handleOperatorClick}
                     handleClearAll={handleClearAll}
                     handleCalculate={handleCalculate}
+                    eqial={setEqial}
                 />)}
 
             {activeMode === 'Scientific' && (
@@ -95,6 +100,7 @@ const MathCalculator = () => {
                     displayValue={displayValue}
                     setDisplayValue={setDisplayValue}
                     handleOperatorClick={handleOperatorClick}
+                    eqial={setEqial}
                 />)}
 
         </BasicCalculatorStyle>

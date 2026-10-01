@@ -1,6 +1,6 @@
 import {BtnEqual, BtnNumber, BtnOperator, BtnScientifc, KeypadGrid} from "../../styles/MainCalculator.jsx";
 
-const ScientificCalculator = ({displayValue, setDisplayValue, handleOperatorClick, handleCalculate}) => {
+const ScientificCalculator = ({displayValue, setDisplayValue, handleOperatorClick, handleCalculate, eqial, setEqial}) => {
     const handleNumberClick = (num) => {
         if (displayValue === '0') {
             setDisplayValue(num);
@@ -11,8 +11,10 @@ const ScientificCalculator = ({displayValue, setDisplayValue, handleOperatorClic
 
     const handleMathLogic = (funcName) => {
         const inputString = funcName + '(';
-
-        if (displayValue === '0') {
+        if (eqial) {
+            setDisplayValue(inputString);
+            setEqial(false);
+        } else if (displayValue === '0') {
             setDisplayValue(inputString);
         } else {
             setDisplayValue(displayValue + inputString);
@@ -21,13 +23,19 @@ const ScientificCalculator = ({displayValue, setDisplayValue, handleOperatorClic
 
     const handleSuffixClick = (symbol) => {
         setDisplayValue(displayValue + symbol);
+        setEqial(false);
     };
 
     const handleConstantClick = (constant) => {
-        if (displayValue === '0') {
+        if (eqial === true) {
             setDisplayValue(constant);
+            setEqial(false);
         } else {
-            setDisplayValue(displayValue + constant);
+            if (displayValue === '0') {
+                setDisplayValue(constant);
+            } else {
+                setDisplayValue(displayValue + constant);
+            }
         }
     };
 

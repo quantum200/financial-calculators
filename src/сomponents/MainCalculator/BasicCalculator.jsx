@@ -7,13 +7,18 @@ import {
     KeypadGrid,
 } from "../../styles/MainCalculator.jsx";
 
-const BasicCalculator = ({ displayValue, setDisplayValue, handleOperatorClick, handleClearAll, handleCalculate }) => {
+const BasicCalculator = ({ displayValue, setDisplayValue, handleOperatorClick, handleClearAll, handleCalculate, eqial, setEqial }) => {
 
     const handleNumberClick = (num) => {
-        if (displayValue === '0') {
+        if (eqial) {
             setDisplayValue(num);
+            setEqial(false);
         } else {
-            setDisplayValue(displayValue + num);
+            if (displayValue === '0') {
+                setDisplayValue(num);
+            } else {
+                setDisplayValue(displayValue + num);
+            }
         }
     };
 
